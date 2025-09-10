@@ -1,30 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Instrument+Serif&family=Poppins:wght@100;200&family=Roboto:wght@300&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-  @import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Instrument+Serif&family=Poppins:wght@100;200&family=Roboto:wght@300&display=swap');
-
-
-
-
-*{
-
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'poppins' , sans-serif;
-
-}
-
-body{
+    body {
     display: flex;
-    justify-content: center;
+     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background: url(mianimg2.jpg);
     background-size: cover;
     background-position: center;
+    position: relative;
+        }
 
-}
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
 
-header{
+        header {
     position: fixed;
     top: 0;
     left: 0;
@@ -37,218 +41,351 @@ header{
     z-index: 99;
 }
 
-.logo{
-    font-size: 1.9em;
-    color: #fff;
-    user-select: none;
-}
+        .logo {
+            font-size: 1.9em;
+            color: #fff;
+            user-select: none;
+            display: flex;
+            align-items: center;
+        }
 
-.Menu a{
-    position: relative;
-    color: #fff;
-    text-decoration: none;
-    font-size: 1em;
-    font-weight: 500;
-    margin-left: 40px;
+        .logo ion-icon {
+            margin-right: 10px;
+        }
 
-}
+        .Menu {
+            display: flex;
+            align-items: center;
+        }
 
-.botão-login{
-    width: 120px;
-    height: 40px;
-    background: transparent;
-    border: 2px solid #fff;
-    border-radius: 6px;
-    outline: none;
-    cursor: pointer;
-    font-size: 1.1em;
-    color: #fff;
-    font-weight: 500;
-    margin-left: 40px;
-    transition: .5s;
-}
+        .Menu a {
+            position: relative;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 500;
+            margin-left: 40px;
+            transition: color 0.3s;
+        }
 
-.botão-login:hover{
-    background: #fff;
-    color: #000;
-    
-}
+       
 
-.Menu a::after{
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 100%;
-    height: 3px;
-    background: #fff;
-    border-radius: 5px;
-    transform: scaleX(0);
-    transform-origin: right;
+        .botão-login {
+            width: 120px;
+            height: 40px;
+            background: transparent;
+            border: 2px solid #fff;
+            border-radius: 6px;
+            outline: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: #fff;
+            font-weight: 500;
+            margin-left: 40px;
+            transition: all 0.3s;
+        }
 
-    transition: transform .5s;
-}
+        .botão-login:hover {
+            background: #fff;
+            color: #1e3c72;
+        }
 
-.Menu a:hover:after{
-    transform-origin: left;
-    transform: scaleX(1);
-    transition: transform .5s;
+        .Menu a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 3px;
+            background: #fff;
+            border-radius: 5px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s;
+        }
 
-}
+        .Menu a:hover:after {
+            transform-origin: left;
+            transform: scaleX(1);
+        }
 
-.telalogin{
-    position:relative;
-    width: 400px;
-    height: 440px;
-    background:     rgba(255, 255, 255, 0.5);
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            display: none;
+        }
+
+        .telalogin {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 420px;
+            background: rgba(255, 255, 255, 0.9);
     border: 3px solid rgba(20, 38, 48, 0.5);
     border-radius: 20px;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 0 20px rgba(13, 41, 58, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+            z-index: 101;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            overflow: hidden;
+            padding: 30px;
+        }
 
+        .telalogin.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
+        .telacadastro {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 420px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            z-index: 101;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            overflow: hidden;
+            padding: 30px;
+        }
 
-}
+        .telacadastro.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
-.telalogin h2 {
-    font-size: 2em;
-    color: #162938;
-    text-align: center;
-}
+        .form-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
 
-.input-box {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    border-bottom: 2px solid #162938;
-    margin: 30px 0;
-}
+        .form-header h2 {
+            font-size: 2.2em;
+            color: #162938;
+            margin-bottom: 10px;
+        }
 
-.input-box label {
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    font-size: 1em;
-    color: #162938;
-    font-weight: 500;
-    pointer-events: none;
-    transition: .5s;
-}
+        .form-header p {
+            color: #666;
+            font-size: 1em;
+        }
 
-.input-box .input1:focus~label{
-    top: -5px;
-    
-}
+        .input-box {
+            position: relative;
+            margin: 25px 0;
+            border-bottom: 2px solid #162938;
+        }
 
-.input-box .input1:valid~label{
-    top: -5px;
-    
-}
+        .input-box input {
+            width: 100%;
+            padding: 15px 45px 15px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            font-size: 1em;
+            color: #333;
+            transition: border-color 0.3s;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
 
-.input-box .input2:focus~label{
-    top: -5px;
-    
-}
+        
 
-.input-box .input2:valid~label{
-    top: -5px;
-    
-}
+        .input-box label {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            font-size: 1em;
+            color: #888;
+            pointer-events: none;
+            transition: 0.3s;
+            background:rgba(255, 255, 255, 0.9);
+            padding: 0 5px;
+        }
 
-.input-box input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-}
+        .input-box input:focus + label,
+        .input-box input:not(:placeholder-shown) + label {
+            top: 0;
+            font-size: 0.85em;
+            color: #162938;
+        }
 
-.icone {
-    position: absolute;
-    right: 8px;
-    font-size: 1.2em;
-    color: #162938;
-    line-height: 57px;
-}
+        .input-box .icone {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2em;
+            color: #888;
+        }
 
-.lembrar{
-    font-size: .9em;
-    color: #162938;
-    font-weight: 500;
-    margin: -15px 0 15px;
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
+        .input-box input:focus ~ .icone {
+            color: #162938;
+        }
 
-}
+        .lembrar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
 
+        .lembrar label {
+            display: flex;
+            align-items: center;
+            color: #555;
+            cursor: pointer;
+        }
 
-.lembrar label input{
-    accent-color: #162938;
-    margin-right: 3px;
-}
+        .lembrar input {
+            margin-right: 8px;
+            accent-color: #162938;
+        }
 
-.lembrar a{
-    color: #162938;
-    text-decoration: none;
+        .lembrar a {
+            color: #162938;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
 
-}
+        .lembrar a:hover {
+            text-decoration: underline;
+        }
 
-.botão{
-    width: 100%;
-    height: 45px;
-    background-color: #162938;
-    border: none;
-    outline: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1em;
-    color: #fff;
-    font-weight: 500;
-}
+        .botão {
+            width: 100%;
+            height: 50px;
+            background-color: #162938;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: #fff;
+            font-weight: 500;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 10px;
+        }
 
-.cadastro{
-    font-size: .9em;
-    color: #162938;
-    text-align: center;
-    font-family: 500;
-    margin: 25px 0 10px;
+        .botão:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
 
-}
+        .cadastro {
+            text-align: center;
+            margin-top: 25px;
+            color: #555;
+            font-size: 0.95em;
+        }
 
-.cadastro a{
-    
-    text-decoration: none;
-    font-weight: 600;
-}   
+        .cadastro a {
+            color: #162938;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
 
-.cadastro a:hover{
-    color: #162938;
-    text-decoration: underline;
-    font-weight: 600;
-}
-   
+        .cadastro a:hover {
+            text-decoration: underline;
+        }
 
-.fechar{
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 45px;
-    height: 45px;
-    background: #162938;
-    font-size: 2em;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom-left-radius: 20px;
-    cursor: pointer;
-    transition: .5s;
-    z-index: 1;
-}
+        .fechar {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 35px;
+            height: 35px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s;
+            z-index: 1;
+        }
 
-   
+        .fechar:hover {
+            background: #e0e0e0;
+        }
+
+        .fechar ion-icon {
+            color: #777;
+            font-size: 1.5em;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 30px;
+            }
+            
+            .Menu a {
+                margin-left: 20px;
+                font-size: 0.9em;
+            }
+            
+            .telalogin, .telacadastro {
+                width: 90%;
+                max-width: 400px;
+                padding: 25px;
+            }
+            
+            .botão-login {
+                width: 100px;
+                height: 35px;
+                font-size: 0.9em;
+                margin-left: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 15px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .Menu {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .Menu a {
+                margin-left: 0;
+                font-size: 0.85em;
+            }
+            
+            .telalogin, .telacadastro {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .form-header h2 {
+                font-size: 1.8em;
+            }
+            
+            .input-box {
+                margin: 20px 0;
+            }
+            
+            .input-box input {
+                padding: 12px 40px 12px 12px;
+            }
+        }
